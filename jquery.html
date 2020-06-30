@@ -1,18 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
 
-        <!-- Bootstrap link-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
 
-        <!-- Stylesheet-->
-        <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap link-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Stylesheet-->
+    <link rel="stylesheet" href="style.css">
 
-    </head>
-    <body>
+</head>
+
+<body>
+    <br>
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1 class="display-4">Calculator</h1>
+            <p class="lead">Here you have a calculator using jQuery!</p>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <!--numbers go here-->
+                <div class="card">
+                    <h3 class="card-header">|   |   |   |   </h3>
+                    <div class="card-body">
+                        <button id="button-1" class="btn btn-info number" value="1"><span>1</span></button>
+                        <button id="button-2" class="btn btn-info number" value="2"><span>2</span></button>
+                        <button id="button-3" class="btn btn-info number" value="3"><span>3</span></button>
+                        <button id="button-plus" class="btn btn-warning operator" value="plus"><span>+</span></button>
+                        <br><br>
+                        <button id="button-4" class="btn btn-info number" value="4"><span>4</span></button>
+                        <button id="button-5" class="btn btn-info number" value="5"><span>5</span></button>
+                        <button id="button-6" class="btn btn-info number" value="6"><span>6</span></button>
+                        <button id="button-minus" class="btn btn-warning operator" value="minus"><span>-</span></button>
+                        <br><br>
+                        <button id="button-7" class="btn btn-info number" value="7"><span>7</span></button>
+                        <button id="button-8" class="btn btn-info number" value="8"><span>8</span></button>
+                        <button id="button-9" class="btn btn-info number" value="9"><span>9</span></button>
+                        <button id="button-multiply" class="btn btn-warning operator" value="times"><span>&times;</span></button>
+                        <br><br>
+                        <button id="button-0" class="btn btn-info number" value="0"><span>0</span></button>
+                        <button id="button-divide" class="btn btn-warning operator" value="divide"><span>&divide;</span></button>
+                        <button id="button-power" class="btn btn-warning operator" value="power"><span>^</span></button>
+                        <button id="button-equal" class="btn btn-success equal" value="equals"><span>=</span></button>
+                        <br><br>
+                        <button id="button-clear" class="btn btn-dark clear" value="clear"><span>clear</span></button>
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+               <!--results go here--> 
+
+               <div class="card">
+                <h3 class="card-header">Result</h3>
+                <div class="card-body">
+                  <h1 id="first-number"></h1>
+                  <h1 id="operator"></h1>
+                  <h1 id="second-number"></h1>
+                  <hr>
+                  <h1 id="result"></h1>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+
+    //Global Variables
+    var firstNumber = 0;
+    var secondNumber = 0;
+    var operator = "";
+    var result = 0;
+    var isOperatorChosen = false;
+    var isCalculated = false;
+
+    //function to initialize calculator
+
+    function initializeCalculator () {
+        firstNumber = "";
+        secondNumber = "";
+        operator ="";
+        isOperatorChosen = false;
+        isCalculated = false;
+
+        $("#first-number, #second-number, #operator, #result").empty();
+    }
+
+    $(".number").on("click", function () {
+
+        //check to see if a calculation was already made
+        if (isCalculated) {
+            return false;
+        }
+
+        //if an operator is chosen then select second number
+        if(isOperatorChosen) {
+            secondNumber += $(this).val();
+            $("#second-number").text(secondNumber);
+        }
+        else {
+            firstNumber += $(this).val();
+            $("#first-numner").text(firstNumber);
+        }
+    });
+
+    $(".operator").on("click", function () {
+
+        //if there is a first number selected or a calculation already happened return false.
+        if (!firstNumber || isCalculated) {
+            return false;
+        }
+
+        //set the operator chose to true so that we can select a second umber
+        isOperatorChosen = true;
+        operator = $(this).val();
+
+        //set the HTML of the #operator to the text of what was clicked
+        $("#operator").text($(this).text());
+    });
+
+    $(".equal").on("click", function () {
+
+        if (isCalculated) {
+            return false;
+        }
+        isCalculated = true;
+        
+        //use parseInt to convert the string into itegers
+        firstNumber = parseInt(firstNumber);
+        secondNumber = parseInt(secondNumber);
+
+        //depending on the operator chose, run the logic
+        if (operator === "plus") {
+            result = firstNumber + secondNumber;
+        }
+        else if (operator === "minus") {
+            result = firstNumber - secondNumber;
+        }
+        else if (operator === "times") {
+            result = firstNumber * secondNumber;
+        }
+        else if (operator === "divide") {
+            result = firstNumber / secondNumber; 
+        }
+        else if (operator === "power") {
+            result = Math.pow(firstNumber, secondNumber);
+        }
+        $("#result").text(result);
+
+        })
+
+        $(".clear").on("click", function () {
+            
+        })
+
+    })
 
 
-    </body>
+
+
+
+    </script>
+
+
+
+
+</body>
+
 </html>
