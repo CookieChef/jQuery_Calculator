@@ -120,7 +120,7 @@
         }
         else {
             firstNumber += $(this).val();
-            $("#first-numner").text(firstNumber);
+            $("#first-number").text(firstNumber);
         }
     });
 
@@ -168,23 +168,19 @@
         }
         $("#result").text(result);
 
-        })
+        });
 
         $(".clear").on("click", function () {
-            
-        })
 
-    })
+          //call initializeCalculator so that we can reset the state of the app
+          initializeCalculator();
 
+        });
 
+        initializeCalculator();
 
-
-
-    </script>
-
-
-
-
+    });
+</script>
 </body>
 
 </html>
