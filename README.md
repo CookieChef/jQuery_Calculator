@@ -9,10 +9,12 @@ This web based application uses jQuery as a JavaScript library. We also used Boo
 https://getbootstrap.com/
 https://api.jquery.com/
 https://htmlcolorcodes.com/
+https://www.w3schools.com/jquery/default.asp
 
 ## Special Thanks to:
 
  https://icons8.com/ - Icons
+ 
  
 
 ## Links:
