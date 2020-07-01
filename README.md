@@ -8,6 +8,7 @@ This web based application uses jQuery as a JavaScript library. We also used Boo
 
 https://getbootstrap.com/
 https://api.jquery.com/
+https://htmlcolorcodes.com/
 
 ## Special Thanks to:
 
