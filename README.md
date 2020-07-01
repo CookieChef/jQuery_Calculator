@@ -16,3 +16,4 @@ Play the game:
 
 Github repository:
 
+![jQuery Calculator](images/jQueryCalculator.png)
