@@ -7,6 +7,7 @@ This is a basic calculator that you can use to sum, divide, substrac, multiply a
 This web based application uses jQuery as a JavaScript library. We also used Bootstrap for the design and container layout and some minor CSS editing. 
 
 https://getbootstrap.com/
+https://api.jquery.com/
 
 ## Special Thanks to:
 
