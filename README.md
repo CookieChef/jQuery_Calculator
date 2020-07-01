@@ -6,3 +6,13 @@ This is a basic calculator that you can use to sum, divide, substrac, multiply a
 
 This web based application uses jQuery as a JavaScript library. We also used Bootstrap for the design and container layout and some minor CSS editing. 
 
+## Special Thanks to:
+
+ https://icons8.com/ - Icons
+
+## Links:
+
+Play the game:
+
+Github repository:
+
